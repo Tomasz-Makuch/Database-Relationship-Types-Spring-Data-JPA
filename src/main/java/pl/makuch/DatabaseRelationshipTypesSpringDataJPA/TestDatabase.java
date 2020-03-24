@@ -27,9 +27,6 @@ public class TestDatabase {
         Address address1 = new Address("Warsaw", "Poland");
         Address address2 = new Address("Berlin", "Germany");
         Address address3 = new Address("Oslo", "Norway");
-        addressRepo.save(address1);
-        addressRepo.save(address2);
-        addressRepo.save(address3);
 
         User user1 = new User("Tomasz", "tomasz123@o2.pl");
         User user2 = new User("Jack", "jask-genetic@rr.de");

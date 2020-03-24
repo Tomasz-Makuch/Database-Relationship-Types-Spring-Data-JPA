@@ -11,7 +11,7 @@ public class User {
     private String name;
     private String email;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
     public User() {
