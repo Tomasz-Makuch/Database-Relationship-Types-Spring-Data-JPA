@@ -1,9 +1,6 @@
 package pl.makuch.DatabaseRelationshipTypesSpringDataJPA.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Address {
@@ -14,7 +11,15 @@ public class Address {
     private String city;
     private String country;
 
+    @OneToOne(mappedBy = "address")
+    private User user;
+
     public Address() {
+    }
+
+    public Address(String city, String country) {
+        this.city = city;
+        this.country = country;
     }
 
     public Long getId() {
@@ -41,9 +46,12 @@ public class Address {
         this.country = country;
     }
 
-    public Address(String city, String country) {
-        this.city = city;
-        this.country = country;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -52,6 +60,7 @@ public class Address {
                 "id=" + id +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

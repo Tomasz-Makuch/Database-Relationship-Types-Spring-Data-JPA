@@ -10,6 +10,7 @@ import pl.makuch.DatabaseRelationshipTypesSpringDataJPA.repository.AddressRepo;
 import pl.makuch.DatabaseRelationshipTypesSpringDataJPA.repository.UserRepo;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class TestDatabase {
@@ -24,6 +25,7 @@ public class TestDatabase {
     }
 
     public void testOneToOne(){
+
         Address address1 = new Address("Warsaw", "Poland");
         Address address2 = new Address("Berlin", "Germany");
         Address address3 = new Address("Oslo", "Norway");
@@ -31,6 +33,7 @@ public class TestDatabase {
         User user1 = new User("Tomasz", "tomasz123@o2.pl");
         User user2 = new User("Jack", "jask-genetic@rr.de");
         User user3 = new User("Bill", "bill-norweg@plx.eu");
+
         user1.setAddress(address1);
         user2.setAddress(address3);
         user3.setAddress(address2);

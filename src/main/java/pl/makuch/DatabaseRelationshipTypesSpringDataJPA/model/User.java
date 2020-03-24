@@ -14,6 +14,7 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
+
     public User() {
     }
 
@@ -60,7 +61,6 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", address=" + address +
                 '}';
     }
 
