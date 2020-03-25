@@ -28,7 +28,7 @@ public class TestDatabase {
         this.postRepo = postRepo;
     }
 
-    public void testOneToOne(){
+    public void testOneToOne() {
 
         Address address1 = new Address("Warsaw", "Poland");
         Address address2 = new Address("Berlin", "Germany");
@@ -47,33 +47,47 @@ public class TestDatabase {
         Post post3 = new Post("OK  !!!");
         Post post4 = new Post("Who you are?");
 
-        user1.getPostList().add(post1);
-        user1.getPostList().add(post4);
-        user2.getPostList().add(post2);
-        user3.getPostList().add(post3);
+        post1.setPostUser(user1);
+        post2.setPostUser(user2);
+        post3.setPostUser(user1);
+        post4.setPostUser(user3);
+
 
         userRepo.save(user1);
         userRepo.save(user2);
         userRepo.save(user3);
+
+        postRepo.save(post1);
+        postRepo.save(post2);
+        postRepo.save(post3);
+        postRepo.save(post4);
     }
 
-    public void printDB(){
+    public void printDB() {
         // display user from DB
+        System.out.println("=========== USER ==================");
         List<User> allUsers = userRepo.findAll();
-        for(User user : allUsers){
+        for (User user : allUsers) {
             System.out.println(user);
         }
 
         // display address from DB
+        System.out.println("=========== ADDRESS ==================");
         List<Address> allAddress = addressRepo.findAll();
-        for(Address address : allAddress){
+        for (Address address : allAddress) {
             System.out.println(address);
+        }
+
+        // display posts from DB
+        System.out.println("=========== POST ==================");
+        List<Post> allPosts = postRepo.findAll();
+        for (Post post : allPosts) {
+            System.out.println(post);
         }
     }
 
     @EventListener(ApplicationReadyEvent.class)
-    public void runTest(){
-
+    public void runTest() {
         testOneToOne();
         printDB();
     }

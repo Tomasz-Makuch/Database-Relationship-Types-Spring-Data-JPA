@@ -18,9 +18,8 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "USER_POST")
-    private List<Post> postList= new ArrayList();
+    @OneToMany(mappedBy = "postUser")
+    private List<Post> postList = new ArrayList();
 
 
     public User() {
@@ -79,7 +78,6 @@ public class User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", address=" + address +
-                ", postList=" + postList +
                 '}';
     }
 }

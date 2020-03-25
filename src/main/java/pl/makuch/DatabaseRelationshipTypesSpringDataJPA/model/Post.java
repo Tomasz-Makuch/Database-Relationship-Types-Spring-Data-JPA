@@ -10,6 +10,9 @@ public class Post {
     private Long id;
     private String content;
 
+    @ManyToOne
+    private User postUser;
+
     public Post(String content) {
         this.content = content;
     }
@@ -33,11 +36,20 @@ public class Post {
         this.content = content;
     }
 
+    public User getPostUser() {
+        return postUser;
+    }
+
+    public void setPostUser(User postUser) {
+        this.postUser = postUser;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
                 "id=" + id +
                 ", content='" + content + '\'' +
+                ", postUser=" + postUser +
                 '}';
     }
 }
