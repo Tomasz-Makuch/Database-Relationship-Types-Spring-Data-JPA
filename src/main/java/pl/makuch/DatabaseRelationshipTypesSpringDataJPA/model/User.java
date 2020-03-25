@@ -1,6 +1,10 @@
 package pl.makuch.DatabaseRelationshipTypesSpringDataJPA.model;
 
+import org.springframework.cache.interceptor.CacheAspectSupport;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -13,6 +17,10 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "USER_POST")
+    private List<Post> postList= new ArrayList();
 
 
     public User() {
@@ -55,13 +63,23 @@ public class User {
         this.address = address;
     }
 
+    public List<Post> getPostList() {
+        return postList;
+    }
+
+    public void setPostList(List<Post> postList) {
+        this.postList = postList;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", address=" + address +
+                ", postList=" + postList +
                 '}';
     }
-
 }

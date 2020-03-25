@@ -60,7 +60,6 @@ public class Address {
                 "id=" + id +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
-                ", user=" + user +
                 '}';
     }
 }
